@@ -5,3 +5,8 @@ gag is to develope space particle telescope more easily
 
 
 Now testing version.
+
+To do lists
+-------------
+1. Adopt GDML file  
+2. Detector ID numbering  
