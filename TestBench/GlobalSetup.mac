@@ -1,0 +1,46 @@
+
+############################################
+## Set up primary generaotr
+/control/execute primaryGeneratorSetup.mac
+
+############################################
+### verbose setup ###
+## Commonly used verbosity
+/run/verbose 0
+/tracking/verbose 0
+
+## Miscellaneous verbosity
+/control/verbose 0
+/event/verbose 0
+/material/verbose 0
+/process/verbose 0
+
+#/process/em/verbose 0 /run/initialize
+#/process/had/particle_hp/verbose 0
+#/process/had/cascade/verbose 0
+#/process/eloss/verbose 0
+#/process/em/verbose 0
+#/vis/verbose 0
+
+############################################
+### Visual setup ###
+## Specify the viewer
+/vis/open OGL                                 # Use OpenGL
+
+/vis/drawVolume world                         # Volumes
+/vis/scene/add/trajectories smooth            # Particle trajectories
+/vis/scene/endOfEventAction accumulate        # Superimpose all of the events
+
+#/vis/scene/add/axes                           # Axes (x=red, y=green, z=blue)
+
+/vis/viewer/set/style wireframe               # Volume style (surface/wireframe)
+/vis/viewer/set/auxiliaryEdge true            # Show edges of curved surfaces
+/vis/viewer/set/lineSegmentsPerCircle 100     # Make circles smoothed
+/vis/viewer/set/viewpointThetaPhi 90.1 180.1  #120 150     # Nice camera angle
+
+############################################
+
+## Invoke the application
+/run/printProgress 10000
+/run/beamOn 0        # arg = 0; Only invokes initialization - no event generation
+                     # arg > 0; Specified number of events will be executed

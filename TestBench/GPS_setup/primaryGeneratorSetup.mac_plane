@@ -1,0 +1,11 @@
+/gps/particle gamma
+/gps/pos/type Plane
+/gps/pos/shape Square
+/gps/pos/centre 0. 0. 3. mm
+/gps/pos/halfx 0.1 mm
+/gps/pos/halfy 0.1 mm
+/gps/ang/type cos
+/gps/ene/type Lin
+/gps/ene/min 2. MeV
+/gps/ene/max 10. MeV
+/gps/ene/gradient 1.
