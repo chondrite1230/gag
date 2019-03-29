@@ -25,6 +25,12 @@
    // =========================================================================
 
 // Construct the default run manager
+  //  if(argc!=1)//VIS mode
+  //  {
+    // G4RunManager * runManager = new G4RunManager;
+  //  }
+  //  else//Batch mode
+  //  {
     G4MTRunManager * runManager = new G4MTRunManager;
     G4int nThreads = G4Threading::G4GetNumberOfCores();
     G4cout<<"Number of Threads="<<nThreads<<G4endl;
@@ -34,6 +40,8 @@
     G4cout<<"Threads="<<nThreads<<G4endl;
     
     runManager->SetNumberOfThreads(nThreads);
+  //  }
+
 
 // Set up mandatory user initialization: Geometry
    runManager->SetUserInitialization( new Geometry() );
