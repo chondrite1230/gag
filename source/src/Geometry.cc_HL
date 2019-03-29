@@ -1,0 +1,186 @@
+#include "Geometry.hh"
+#include "G4Orb.hh"
+#include "G4Box.hh"
+#include "G4Trd.hh"/////
+#include "G4LogicalVolume.hh"
+#include "G4PVPlacement.hh"
+#include "G4VPhysicalVolume.hh"
+#include "G4ThreeVector.hh"
+#include "G4RotationMatrix.hh"
+#include "G4Transform3D.hh"
+#include "G4NistManager.hh"
+#include "G4VisAttributes.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4SubtractionSolid.hh"
+#include "G4UnionSolid.hh"
+#include "G4PVReplica.hh"
+
+Geometry::Geometry() {}
+Geometry::~Geometry() {}
+
+G4VPhysicalVolume* Geometry::Construct()
+{
+// Get pointer to 'Material Manager'
+G4NistManager* materi_Man = G4NistManager::Instance();
+
+// Define 'World Volume'
+ G4Orb* World = new G4Orb("World",30*m/2);
+ //4Box* World = new G4Box("World",2.0*m/2, 2.0*m/2, 2.0*m/2);
+//G4Material* World_M = materi_Man->FindOrBuildMaterial("G4_Air");
+G4Material* Vacuum = new G4Material("Intergalactic", 1, 1.008*g/mole, 1.e-25*g/cm3,kStateGas, 2.73*kelvin, 3.e-18*pascal);
+G4LogicalVolume* World_LV = new G4LogicalVolume(World, Vacuum, "World_LV");
+World_LV->SetVisAttributes (G4VisAttributes::Invisible);
+G4int World_ID=0;    
+G4PVPlacement* World_PV = new G4PVPlacement(G4Transform3D(), "World_PV", World_LV, 0, false, World_ID);
+
+
+// Define AlBox
+
+G4Box* Box1 = new G4Box("Box1", 36.5*mm/2, 77.0*mm/2, 32.0*mm/2);
+G4Box* Coli1 = new G4Box("Coli1",9.0*mm/2, 56.0*mm/2, 9.23*mm/2);
+G4UnionSolid* BoxUni = new G4UnionSolid("BoxUni",Box1,Coli1,0,G4ThreeVector(0*mm, 0*mm, -20.615*mm));
+
+G4Box* Box2 = new G4Box("Box2", 24.5*mm/2, 65.0*mm/2, 20.0*mm/2);
+//G4Box* Box3 = new G4Box("Box3", 3.0*mm/2, 13.3104*mm/2, 6.003*mm/2);
+
+G4Trd* Box3 = new G4Trd("Box3", 4.0*mm/2, 4.0*mm/2, 0.6304*mm/2, 7.444*mm/2,  6.003*mm/2 );
+ 
+G4Box* Slit1 = new G4Box("Slit1",0.63*mm/2, 0.630*mm/2, 0.302*mm/2);
+G4Box* Slit2 = new G4Box("Slit2",0.63*mm/2, 0.991*mm/2, 0.302*mm/2);
+G4Box* Slit3 = new G4Box("Slit3",0.63*mm/2, 1.353*mm/2, 0.302*mm/2);
+G4Box* Slit4 = new G4Box("Slit4",0.63*mm/2, 1.714*mm/2, 0.302*mm/2);
+G4Box* Slit5 = new G4Box("Slit5",0.63*mm/2, 2.076*mm/2, 0.302*mm/2);
+G4Box* Slit6 = new G4Box("Slit6",0.63*mm/2, 2.437*mm/2, 0.302*mm/2);
+G4Box* Slit7 = new G4Box("Slit7",0.63*mm/2, 2.799*mm/2, 0.302*mm/2);
+G4Box* Slit8 = new G4Box("Slit8",0.63*mm/2, 3.160*mm/2, 0.302*mm/2);
+G4Box* Slit9 = new G4Box("Slit9",0.63*mm/2, 3.522*mm/2, 0.302*mm/2);
+G4Box* Slit10 = new G4Box("Slit10",0.63*mm/2, 3.883*mm/2, 0.302*mm/2);
+G4Box* Slit11 = new G4Box("Slit11",0.63*mm/2, 4.245*mm/2, 0.302*mm/2);
+G4Box* Slit12 = new G4Box("Slit12",0.63*mm/2, 4.606*mm/2, 0.302*mm/2);
+G4Box* Slit13 = new G4Box("Slit13",0.63*mm/2, 4.968*mm/2, 0.302*mm/2);
+G4Box* Slit14 = new G4Box("Slit14",0.63*mm/2, 5.329*mm/2, 0.302*mm/2);
+G4Box* Slit15 = new G4Box("Slit15",0.63*mm/2, 5.691*mm/2, 0.302*mm/2);
+G4Box* Slit16 = new G4Box("Slit16",0.63*mm/2, 6.052*mm/2, 0.302*mm/2);
+G4Box* Slit17 = new G4Box("Slit17",0.63*mm/2, 6.414*mm/2, 0.302*mm/2);
+G4Box* Slit18 = new G4Box("Slit18",0.63*mm/2, 6.775*mm/2, 0.302*mm/2);
+G4Box* Slit19 = new G4Box("Slit19",0.63*mm/2, 7.136*mm/2, 0.302*mm/2);
+G4Box* Slit20 = new G4Box("Slit20",0.63*mm/2, 7.498*mm/2, 0.302*mm/2);
+G4Box* Slit21 = new G4Box("Slit21",0.63*mm/2, 7.859*mm/2, 0.302*mm/2);
+G4Box* Slit22 = new G4Box("Slit22",0.63*mm/2, 8.221*mm/2, 0.302*mm/2);
+G4Box* Slit23 = new G4Box("Slit23",0.63*mm/2, 8.582*mm/2, 0.302*mm/2);
+G4Box* Slit24 = new G4Box("Slit24",0.63*mm/2, 8.980*mm/2, 0.332*mm/2);
+G4Box* Slit25 = new G4Box("Slit25",3.00*mm/2, 14.000*mm/2, 2.002*mm/2);
+//G4Box* Slit26 = new G4Box("Slit26",0.63*mm/2, 31.657*mm/2, 0.302*mm/2);
+//G4Box* Slit27 = new G4Box("Slit27",0.63*mm/2, 33.430*mm/2, 1.482*mm/2);
+//G4Box* Slit28 = new G4Box("Slit28",4.5*mm/2, 38.000*mm/2, 2.002*mm/2);
+
+G4UnionSolid* Void = new G4UnionSolid("Void",Box2,Box3,0,G4ThreeVector(0*mm, 0*mm, -13.0*mm));
+G4UnionSolid* SlitUni0 = new G4UnionSolid("SlitUni0",Slit1,Void,0,G4ThreeVector(0*mm, 0*mm, 16.15*mm));
+G4UnionSolid* SlitUni1 = new G4UnionSolid("SlitUni1",SlitUni0,Slit2,0,G4ThreeVector(0*mm, 0*mm, -0.3*mm));
+G4UnionSolid* SlitUni2 = new G4UnionSolid("SlitUni2",SlitUni1,Slit3,0,G4ThreeVector(0*mm, 0*mm, -0.6*mm));
+G4UnionSolid* SlitUni3 = new G4UnionSolid("SlitUni3",SlitUni2,Slit4,0,G4ThreeVector(0*mm, 0*mm, -0.9*mm));
+G4UnionSolid* SlitUni4 = new G4UnionSolid("SlitUni4",SlitUni3,Slit5,0,G4ThreeVector(0*mm, 0*mm, -1.2*mm));
+G4UnionSolid* SlitUni5 = new G4UnionSolid("SlitUni5",SlitUni4,Slit6,0,G4ThreeVector(0*mm, 0*mm, -1.5*mm));
+G4UnionSolid* SlitUni6 = new G4UnionSolid("SlitUni6",SlitUni5,Slit7,0,G4ThreeVector(0*mm, 0*mm, -1.8*mm));
+G4UnionSolid* SlitUni7 = new G4UnionSolid("SlitUni7",SlitUni6,Slit8,0,G4ThreeVector(0*mm, 0*mm, -2.1*mm));
+G4UnionSolid* SlitUni8 = new G4UnionSolid("SlitUni8",SlitUni7,Slit9,0,G4ThreeVector(0*mm, 0*mm, -2.4*mm));
+G4UnionSolid* SlitUni9 = new G4UnionSolid("SlitUni9",SlitUni8,Slit10,0,G4ThreeVector(0*mm, 0*mm, -2.7*mm));
+G4UnionSolid* SlitUni10 = new G4UnionSolid("SlitUni10",SlitUni9,Slit11,0,G4ThreeVector(0*mm, 0*mm, -3.0*mm));
+G4UnionSolid* SlitUni11 = new G4UnionSolid("SlitUni11",SlitUni10,Slit12,0,G4ThreeVector(0*mm, 0*mm, -3.3*mm));
+G4UnionSolid* SlitUni12 = new G4UnionSolid("SlitUni12",SlitUni11,Slit13,0,G4ThreeVector(0*mm, 0*mm, -3.6*mm));
+G4UnionSolid* SlitUni13 = new G4UnionSolid("SlitUni13",SlitUni12,Slit14,0,G4ThreeVector(0*mm, 0*mm, -3.9*mm));
+G4UnionSolid* SlitUni14 = new G4UnionSolid("SlitUni14",SlitUni13,Slit15,0,G4ThreeVector(0*mm, 0*mm, -4.2*mm));
+G4UnionSolid* SlitUni15 = new G4UnionSolid("SlitUni15",SlitUni14,Slit16,0,G4ThreeVector(0*mm, 0*mm, -4.5*mm));
+G4UnionSolid* SlitUni16 = new G4UnionSolid("SlitUni16",SlitUni15,Slit17,0,G4ThreeVector(0*mm, 0*mm, -4.8*mm));
+G4UnionSolid* SlitUni17 = new G4UnionSolid("SlitUni17",SlitUni16,Slit18,0,G4ThreeVector(0*mm, 0*mm, -5.1*mm));
+G4UnionSolid* SlitUni18 = new G4UnionSolid("SlitUni18",SlitUni17,Slit19,0,G4ThreeVector(0*mm, 0*mm, -5.4*mm));
+G4UnionSolid* SlitUni19 = new G4UnionSolid("SlitUni19",SlitUni18,Slit20,0,G4ThreeVector(0*mm, 0*mm, -5.7*mm));
+G4UnionSolid* SlitUni20 = new G4UnionSolid("SlitUni20",SlitUni19,Slit21,0,G4ThreeVector(0*mm, 0*mm, -6.0*mm));
+G4UnionSolid* SlitUni21 = new G4UnionSolid("SlitUni21",SlitUni20,Slit22,0,G4ThreeVector(0*mm, 0*mm, -6.3*mm));
+G4UnionSolid* SlitUni22 = new G4UnionSolid("SlitUni22",SlitUni21,Slit23,0,G4ThreeVector(0*mm, 0*mm, -6.6*mm));
+G4UnionSolid* SlitUni23 = new G4UnionSolid("SlitUni23",SlitUni22,Slit24,0,G4ThreeVector(0*mm, 0*mm, -6.915*mm));
+G4UnionSolid* SlitUni24 = new G4UnionSolid("SlitUni24",SlitUni23,Slit25,0,G4ThreeVector(0*mm, 0*mm, -8.08*mm));
+//G4UnionSolid* SlitUni25 = new G4UnionSolid("SlitUni25",SlitUni24,Slit26,0,G4ThreeVector(0*mm, 0*mm, -25*mm));
+//G4UnionSolid* SlitUni26 = new G4UnionSolid("SlitUni26",SlitUni25,Slit27,0,G4ThreeVector(0*mm, 0*mm, -26.24*mm));
+//G4UnionSolid* SlitUni27 = new G4UnionSolid("SlitUni27",SlitUni26,Slit28,0,G4ThreeVector(0*mm, 0*mm, -27.98*mm));
+
+G4SubtractionSolid* HEP_eH =new G4SubtractionSolid("HEP_eH",BoxUni,SlitUni24,0,G4ThreeVector(0*mm,0*mm,-16.15*mm));
+
+G4Material*HEP_M = materi_Man -> FindOrBuildMaterial("G4_Al");
+G4LogicalVolume*HEP_LV = new G4LogicalVolume(HEP_eH,HEP_M,"HEP_LV",0,0,0);
+G4ThreeVector HEP_Ve_LV = G4ThreeVector(0*mm,0*mm,16.00*mm);
+G4RotationMatrix HEP_Ro_LV = G4RotationMatrix();
+G4Transform3D HEP_Tr_LV = G4Transform3D(HEP_Ro_LV,HEP_Ve_LV);
+G4int HEP_ID = 1;
+new G4PVPlacement(HEP_Tr_LV,"HEP_PV",HEP_LV,World_PV,false,HEP_ID);
+
+
+/////////////////////////////////////////////////
+//  Detector assembly/////////////////////////////////////////////////////////////////////////////////////
+
+// Define 'Aluminum window'
+// Define the shape of solid
+   G4Box* AlWindow = new G4Box( "AlWindow", 9.0*mm/2, 56.0*mm/2, 12.5*um/2);
+   G4Material* AlWindow_M = materi_Man->FindOrBuildMaterial("G4_Al");
+   G4LogicalVolume* AlWindow_LV = new G4LogicalVolume( AlWindow, AlWindow_M, "AlWindow_LV", 0, 0, 0 );
+   G4ThreeVector AlWindow_Ve_LV = G4ThreeVector(0*mm, 0*mm, 7.05375*mm);
+   G4RotationMatrix AlWindow_Ro_LV = G4RotationMatrix();
+   G4Transform3D AlWindow_Tr_LV = G4Transform3D(AlWindow_Ro_LV, AlWindow_Ve_LV);
+   G4int AlWindow_ID = 1000;                
+   new G4PVPlacement(AlWindow_Tr_LV, "AlWindow_PV", AlWindow_LV, World_PV, false, AlWindow_ID); 
+
+   
+// Define '1st Pixcel Detector' - Global Envelop
+   // Define the shape of the global envelop
+   G4Box* SiDetector = new G4Box("SiDetector", 3.53*mm/2, 13.4*mm/2, 0.05*mm/2);
+   G4Material* SiDetector_M = materi_Man->FindOrBuildMaterial("G4_Si");
+   G4LogicalVolume* SiDetector_LV = new G4LogicalVolume(SiDetector, SiDetector_M, "SiDetector_LV");
+   SiDetector_LV->SetVisAttributes (G4VisAttributes::Invisible);
+
+   G4int PixelNo = 67;                                
+   G4Box* SiPixel = new G4Box("SiPixel", 3.53*mm/2, 13.4*mm/PixelNo/2, 0.05*mm/2);
+   G4Material* SiPixel_M = materi_Man->FindOrBuildMaterial("G4_Si");
+   G4LogicalVolume* SiPixel_LV = new G4LogicalVolume(SiPixel, SiPixel_M, "SiPixel_LV");
+   new G4PVReplica("SiPixel_PV", SiPixel_LV, SiDetector_LV, kYAxis, PixelNo, 13.4*mm/PixelNo); 
+
+   G4ThreeVector SiDetector_Ve_LV = G4ThreeVector(0*mm,0*mm,9.565*mm);
+   G4RotationMatrix SiDetector_Ro_LV = G4RotationMatrix();
+   G4Transform3D SiDetector_Tr_LV = G4Transform3D(SiDetector_Ro_LV, SiDetector_Ve_LV);
+   G4int SiDetector_ID = 2000;          
+   new G4PVPlacement(SiDetector_Tr_LV, "SiDetector_PV#1", SiDetector_LV, World_PV,false, SiDetector_ID, true);
+   
+// Define '2st Pixcel Detector' - Global Envelop
+   G4Box* SiDetector_2 = new G4Box("SiDetector_2", 3.53*mm/2, 23.04*mm/2, 0.6*mm/2);
+   G4Material* SiDetector_M_2 = materi_Man->FindOrBuildMaterial("G4_Si");
+   G4LogicalVolume* SiDetector_LV_2 = new G4LogicalVolume(SiDetector_2, SiDetector_M_2, "SiDetector_LV_2");
+   SiDetector_LV_2->SetVisAttributes (G4VisAttributes::Invisible);
+   
+   G4int PixelNo_2 = 1;                                
+   G4Box* SiPixel_2 = new G4Box("SiPixel_2", 3.53*mm/2, 23.04*mm/PixelNo_2/2, 0.6*mm/2);
+   G4Material* SiPixel_M_2 = materi_Man->FindOrBuildMaterial("G4_Si");
+   G4LogicalVolume* SiPixel_LV_2 = new G4LogicalVolume(SiPixel_2, SiPixel_M_2, "SiPixel_LV_2");
+   new G4PVReplica("SiPixel_PV", SiPixel_LV_2, SiDetector_LV_2, kYAxis, PixelNo_2, 23.04*mm/PixelNo_2);
+
+   G4ThreeVector SiDetector_Ve_LV_2 = G4ThreeVector(0.0*mm, 0.0*mm, 10.92*mm);
+   G4RotationMatrix SiDetector_Ro_LV_2 = G4RotationMatrix();
+   G4Transform3D SiDetector_Tr_LV_2 = G4Transform3D(SiDetector_Ro_LV_2, SiDetector_Ve_LV_2);
+   G4int SiDetector_ID_2 = 3000;   
+   new G4PVPlacement(SiDetector_Tr_LV_2, "SiDetector_PV#2", SiDetector_LV_2, World_PV, false, SiDetector_ID_2, true);
+
+////////////////////////////////////////////////////////////////
+   SiDetector_Ve_LV_2 = G4ThreeVector(0.0*mm, 0.0*mm, 12.72*mm);
+   SiDetector_Ro_LV_2 = G4RotationMatrix(0,0,0);
+   SiDetector_Tr_LV_2 = G4Transform3D(SiDetector_Ro_LV_2, SiDetector_Ve_LV_2);
+   SiDetector_ID_2 = 4000;
+   new G4PVPlacement(SiDetector_Tr_LV_2, "SiDetector_PV#3", SiDetector_LV_2, World_PV, false, SiDetector_ID_2, true);
+  
+////////////////////////////////////////////////////////////////
+   SiDetector_Ve_LV_2 = G4ThreeVector(0.0*mm, 0.0*mm, 14.52*mm);
+   SiDetector_Ro_LV_2 = G4RotationMatrix(0,0,0);
+   SiDetector_Tr_LV_2 = G4Transform3D(SiDetector_Ro_LV_2, SiDetector_Ve_LV_2);
+   SiDetector_ID_2 = 5000;           
+   new G4PVPlacement(SiDetector_Tr_LV_2, "SiDetector_PV#4", SiDetector_LV_2, World_PV, false, SiDetector_ID_2, true);
+  
+
+return World_PV;
+}
