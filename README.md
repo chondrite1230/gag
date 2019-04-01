@@ -9,4 +9,6 @@ Now testing version.
 To do lists
 -------------
 1. Adopt GDML file  
-2. Detector ID numbering  
+2. Detector ID numbering 
+
+![gag concept](https://github.com/chondrite1230/gag/blob/master/gag.png)
